@@ -1,0 +1,191 @@
+{
+    "openapi" : "3.0.0",
+    "info" : {
+        "title" : "Cars Documentation",
+        "description": "This is an API Cars",
+        "version":"1.0.0",
+        "contact" : {
+            "email":"anderson.belino28@gmail.com"
+        }
+    },
+    "paths" : {
+        "/categories" : {
+            "post" : {
+                "tags" : ["Category"],
+                "summary" : "Create a category",
+                "description" : "Create a new category",
+                "requestBody" : {
+                    "content" : {
+                        "application/json":{
+                            "schema":{
+                                "type" : "object",
+                                "properties":{
+                                    "name" :{
+                                        "type" : "string"
+                                    },
+                                    "description": {
+                                        "type" : "string"
+                                    }
+                                },
+                                "example" :{
+                                    "name" : "Categpry name Sample",
+                                    "description" : "Category description sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "201" : {
+                        "description" : "Created"
+                    },
+                    "500" : {
+                        "description" : "Category Already Exists"
+                    }
+                }
+            },
+            "get" : {
+                "tags" : ["Category"],
+                "summary" : "List All Categories",
+                "description" :"list All Categories",
+                "responses" : {
+                    "200" : {
+                        "description" : "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items" : {
+                                        "type": "object",
+                                        "properties" : {
+                                            "id" : {
+                                                "type": "integer",
+                                                "format": "int64"
+                                            },
+                                            "name" : {
+                                                "type" : "string"
+                                            },
+                                            "description" : {
+                                                "type" : "string"
+                                            },
+                                            "created_at" : {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/specification" : {
+            "post" : {
+                "tags" : ["Specification"],
+                "summary" : "Create a Specification",
+                "description" : "Create a new Specification",
+                "requestBody" : {
+                    "content" : {
+                        "application/json":{
+                            "schema":{
+                                "type" : "object",
+                                "properties":{
+                                    "name" :{
+                                        "type" : "string"
+                                    },
+                                    "description": {
+                                        "type" : "string"
+                                    }
+                                },
+                                "example" :{
+                                    "name" : "Specification name Sample",
+                                    "description" : "Specification description sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "201" : {
+                        "description" : "Created"
+                    },
+                    "500" : {
+                        "description" : "Specification Already Exists"
+                    }
+                }
+            },
+            "get" : {
+                "tags" : ["Specification"],
+                "summary" : "List All Specification",
+                "description" :"list All Specification",
+                "responses" : {
+                    "200" : {
+                        "description" : "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items" : {
+                                        "type": "object",
+                                        "properties" : {
+                                            "id" : {
+                                                "type": "integer",
+                                                "format": "int64"
+                                            },
+                                            "name" : {
+                                                "type" : "string"
+                                            },
+                                            "description" : {
+                                                "type" : "string"
+                                            },
+                                            "created_at" : {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/categories/import": {
+            "post": {
+              "tags": ["Category"],
+              "name": "Import CSV categories",
+              "description": "Import CSV categories.",
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "multipart/form-data": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "file": {
+                          "type": "string",
+                          "format": "binary"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses" : {
+                "200" : {
+                    "description" : "Import succes"
+                },
+                "500" : {
+                    "description" : "erros import"
+                }
+              }
+            }
+          }
+                          
+    }
+
+}
